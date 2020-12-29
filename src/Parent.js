@@ -1,23 +1,39 @@
-import logo from './logo.svg';
+import React , { useReducer , createContext, useState} from 'react';
 import './App.css';
-import { useState } from 'react';
 import Child from './Child';
+import Child2 from './Child2';
+export const AppContext = createContext();
+
+const initialState = {
+  data: ''
+};
+function reducer(state, action) {
+  switch (action.type) {
+      case 'CHANGE_DATA':
+          return {
+            data: action.data
+          };
+
+      default:
+          return initialState;
+  }
+}
 
 function Parent() {
-const [data,setdata]=useState('');
-function changeHandler(event){
-    setdata(event.target.value);
-}
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const {data} =state;
   return (
+    <AppContext.Provider value={{ state, dispatch }}>
     <div className="App">
       <header className="App-header">
       <h1>I am the Parent</h1>
-        <input placeholder="Enter something to be reflected in Child Component"
-        onChange={changeHandler}
-        value={data}/>
       </header>
-      <Child data={data}/>
+      <div >
+      <Child/>
+      <Child2 data={data}/>
+      </div>
     </div>
+    </AppContext.Provider>
   );
 }
 

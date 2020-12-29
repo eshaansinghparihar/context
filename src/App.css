@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 50vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,6 +23,30 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.Child2-header {
+  background-color: #df4b1e;
+  min-height: 50vh;
+  min-width:50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.Child1-header {
+  background-color: #ffffff;
+  min-height: 50vh;
+  min-width: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: gray;
+}
+
 
 .App-link {
   color: #61dafb;
@@ -37,6 +61,12 @@
   }
 }
 input{
+  height: 5vh;
+  width:80%;
+}
+button{
+  margin-top: 1vh;
+  padding: 1vh;
   height: 5vh;
   width:80%;
 }

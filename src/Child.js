@@ -1,24 +1,25 @@
 import './App.css';
-import { useState } from 'react';
+import React , {useState, useEffect,useContext} from 'react';
+import { AppContext } from './Parent';
 
-const Child=({data})=> {
-console.log(data)
-if(data === '')
+function Child(){
+    const [data,setdata]=useState('');
+    const {state, dispatch} = useContext(AppContext);
+    function changeHandler(event){
+        setdata(event.target.value);
+        dispatch({ type: 'CHANGE_DATA', data: event.target.value});
+    }
 return (
-    <div>
-        <h1>I am the Child</h1>
-        <h1>No Data Has Been Passed Yet.</h1>
-    </div>
+    <div className="App">
+    <header className="Child1-header">
+        <h1>I am the First Child</h1>
+        <input placeholder="Enter something to be reflected in Parent Component"
+        onChange={changeHandler}
+        value={data}/>
+          </header>
+        </div>
     
 );
-else
-return (
-    <div>
-        <h1>I am the Child</h1>
-        <h1>{data}</h1>
-    </div>
-
-  );
 }
 
 export default Child;
